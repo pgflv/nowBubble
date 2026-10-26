@@ -1,0 +1,53 @@
+{
+  "name": "nowbubble-desktop",
+  "productName": "nowBubble",
+  "version": "1.1.0",
+  "private": true,
+  "description": "Sincroniza Last.fm con la burbuja de perfil de WhatsApp",
+  "license": "UNLICENSED",
+  "author": "nowBubble",
+  "main": "app/main.cjs",
+  "scripts": {
+    "start": "electron .",
+    "test": "node --test test/*.test.*",
+    "dist": "electron-builder --win portable --x64",
+    "pack": "electron-builder --dir --win --x64"
+  },
+  "dependencies": {
+    "selenium-webdriver": "4.51.0"
+  },
+  "devDependencies": {
+    "electron": "45.0.0",
+    "electron-builder": "26.18.0"
+  },
+  "build": {
+    "appId": "local.nowbubble.desktop",
+    "productName": "nowBubble",
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "app/**/*",
+      "lib/**/*",
+      "package.json"
+    ],
+    "asarUnpack": [
+      "node_modules/selenium-webdriver/bin/**"
+    ],
+    "win": {
+      "target": [
+        {
+          "target": "portable",
+          "arch": [
+            "x64"
+          ]
+        }
+      ],
+      "signExecutable": false,
+      "icon": "app/icon.ico"
+    },
+    "portable": {
+      "artifactName": "nowBubble-${version}-Windows-x64.exe"
+    }
+  }
+}

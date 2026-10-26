@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="es"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'">
+<title>nowBubble</title><link rel="stylesheet" href="style.css"></head>
+<body><main>
+<header><div class="brand"><span class="mark" aria-hidden="true">♬</span><div><h1>nowBubble</h1><p>Tu música, en tu perfil.</p></div></div><span id="status" class="badge">Detenido</span></header>
+<section class="card published" aria-live="polite">
+ <div class="eyebrow"><span class="dot"></span> INFO. DE WHATSAPP</div>
+ <p id="published">Tu próxima canción empieza aquí.</p>
+ <p id="confirmed" class="muted">El texto aparecerá después de conectar WhatsApp.</p>
+</section>
+<div id="notice" role="status" class="notice" hidden></div>
+<section class="card">
+ <div class="section-top"><h2>Conecta tus cuentas</h2><span id="linked" class="muted">WhatsApp sin vincular</span></div>
+ <form id="accounts"><div class="columns">
+ <label>Usuario de Last.fm<input id="username" autocomplete="username" spellcheck="false" maxlength="100" placeholder="Tu usuario"></label>
+ <label>API key de Last.fm<input id="key" type="password" autocomplete="off" spellcheck="false" placeholder="Tu API key" maxlength="32"></label>
+ </div>
+ <div class="account-footer"><p class="muted">La clave se guarda cifrada en este equipo.</p><button type="submit" id="saveAccounts" class="secondary">Guardar datos</button></div></form>
+ <div class="actions"><button id="start" class="primary">Vincular e iniciar</button><button id="stop" class="secondary" disabled>Detener</button></div>
+ <p class="hint" id="loginHelp">Se abrirá Chrome para vincular WhatsApp con un QR.</p>
+</section>
+<section class="card">
+ <form id="idleForm"><div class="section-top"><label for="idle">Cuando no escuchas música</label><span id="count" class="muted">22 / 50</span></div>
+ <div class="idle-row"><input id="idle" value="No music, just thoughts" aria-describedby="idleHelp" autocomplete="off"><button type="submit" class="secondary" id="saveIdle">Guardar</button></div>
+ <p id="idleHelp" class="hint">Puedes cambiarlo cuando quieras. Se usará tras 90 segundos sin reproducción.</p></form>
+</section>
+<footer><p>Last.fm → WhatsApp <span>·</span> Consulta cada 30 s</p><button id="logout" class="text-button">Cerrar sesión de WhatsApp</button></footer>
+<p class="footnote">Al cerrar esta ventana, se detiene la sincronización. Tu vinculación se conserva.</p>
+</main>
+<dialog id="logoutDialog"><h2>Cerrar sesión de WhatsApp</h2><p>Se detendrá el servicio y se desvinculará esta aplicación. Tus datos de Last.fm y el mensaje de reposo se conservarán.</p><div class="actions"><button id="cancelLogout" class="secondary">Cancelar</button><button id="confirmLogout" class="danger">Cerrar sesión</button></div></dialog>
+<script src="renderer.js"></script></body></html>
+
